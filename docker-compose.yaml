@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  ssh_host1:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "5020:22"
+
+  ssh_host2:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "5021:22"
