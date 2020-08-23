@@ -1,0 +1,39 @@
+---
+- name: Install Mongodb
+  apt:
+    name: mongodb
+    state: latest
+    update_cache: yes
+
+- name: Copy config file
+  copy:
+    src: mongodb.conf
+    dest: /etc/mongodb.conf
+    owner: root
+    group: root
+  notify:
+  - Restart mongodb
+
+# - name: Install apt-utils
+#   apt:
+#     name: apt-utils
+#     state: present
+
+# - name: Install gnupg
+#   apt:
+#     name: gnupg
+#     state: present
+
+# - name: Import the public key used by the package management system
+#   shell: wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+
+# - name: Create the list file for Ubuntu 18.04 
+#   shell: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+# - name: Install Mongodb
+#   apt:
+#     name: mongodb-org
+#     state: latest
+#     update_cache: yes
+#   notify:
+#   - Start mongodb
